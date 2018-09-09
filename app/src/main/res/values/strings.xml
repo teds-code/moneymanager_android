@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Money Manager</string>
+    <string name="str_button_clearDB">Clear Database (Use with caution)</string>
+    <string name="str_general_confirm">Confirm</string>
+    <string name="str_general_cancel">Cancel</string>
+    <string name="str_msg_deleteDB">Do you really want to delete the database?
+        All unsynchronized data and settings will be lost. The application will be closed
+        after the database is removed.
+    </string>
 </resources>
