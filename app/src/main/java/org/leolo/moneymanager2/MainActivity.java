@@ -1,5 +1,8 @@
 package org.leolo.moneymanager2;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +16,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Log.i(TAG,"Application started");
-
+        updateVisability();
         final Button button_clearDB = (Button) findViewById(R.id.button_clearDB);
+
         button_clearDB.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -25,5 +30,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ((Button)findViewById(R.id.button_config)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Open config activity");
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                updateVisability();
+            }
+        });
+    }
+
+    private void updateVisability(){
+        SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        if(prefs.getBoolean("debug.enable",false)){
+            Log.d(TAG,"Debug mode off");
+            findViewById(R.id.button_clearDB).setVisibility(View.INVISIBLE);
+        }else{
+            Log.d(TAG,"Debug mode On");
+            findViewById(R.id.button_clearDB).setVisibility(View.VISIBLE);
+        }
     }
 }

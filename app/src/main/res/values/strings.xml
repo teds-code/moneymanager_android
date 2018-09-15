@@ -1,10 +1,35 @@
 <resources>
     <string name="app_name">Money Manager</string>
+
     <string name="str_button_clearDB">Clear Database (Use with caution)</string>
+    <string name="str_button_config">Configuration</string>
+
     <string name="str_general_confirm">Confirm</string>
     <string name="str_general_cancel">Cancel</string>
+
     <string name="str_msg_deleteDB">Do you really want to delete the database?
         All unsynchronized data and settings will be lost. The application will be closed
         after the database is removed.
     </string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_sync_url">Base URL for the web  application</string>
+    <string name="pref_description_sync_url">
+        The URL for the web application
+    </string>
+
+    <string name="pref_title_sync_enable">Enable auto synchronization</string>
+    <string name="pref_description_sync_enable">Enable synchronization when application startup
+        and new tranaction is entered.
+    </string>
+
+    <string name="pref_title_debug">Debug mode</string>
+    <string name="pref_description_debug">Enable debug mode, which will provide few extra function</string>
+
+
 </resources>
