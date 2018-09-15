@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "Open config activity");
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
+            }
+        });
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 updateVisability();
             }
         });
@@ -43,8 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateVisability(){
         SharedPreferences prefs =
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        if(prefs.getBoolean("debug.enable",false)){
+                PreferenceManager.getDefaultSharedPreferences(this);
+        for(String s: prefs.getAll().keySet()){
+            Log.d("CONFINFO",s+":"+prefs.getAll().get(s));
+        }
+        if(!prefs.getBoolean("debug.enable",false)){
             Log.d(TAG,"Debug mode off");
             findViewById(R.id.button_clearDB).setVisibility(View.INVISIBLE);
         }else{
