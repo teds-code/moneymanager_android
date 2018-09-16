@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         Log.i(TAG,"Application started");
-        updateVisability();
+        updateVisibility();
         final Button button_clearDB = (Button) findViewById(R.id.button_clearDB);
 
         button_clearDB.setOnClickListener(new View.OnClickListener(){
@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "Open config activity");
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
-                updateVisability();
+                updateVisibility();
             }
         });
     }
 
-    private void updateVisability(){
+    private void updateVisibility(){
         SharedPreferences prefs =
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         if(prefs.getBoolean("debug.enable",false)){
